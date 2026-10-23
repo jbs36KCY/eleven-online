@@ -1,0 +1,16 @@
+{
+  "name": "eleven-online",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "ws": "^8.18.0",
+    "three": "0.160.1"
+  }
+}
