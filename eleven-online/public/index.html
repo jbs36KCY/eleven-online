@@ -141,7 +141,7 @@ function showResults(){
 }
 const menuStyle=document.createElement('style');menuStyle.textContent='.gameModal{position:fixed;inset:8% 15%;overflow:auto;z-index:200;background:#102338f5;border:1px solid #65e9bd;border-radius:18px;padding:30px;text-align:center}.gameModal[hidden]{display:none}.gameModal table{width:100%;border-collapse:collapse;margin:20px 0}.gameModal td,.gameModal th{padding:10px;border-bottom:1px solid #ffffff22}.gameModal button{margin:8px;padding:14px 22px}.gameModal p{line-height:1.8}';document.head.append(menuStyle);
 const startMenu=document.createElement('div');startMenu.id='startMenu';startMenu.className='gameModal';startMenu.innerHTML='<h1>ELEVEN · 3D 축구</h1><p>플레이 모드를 선택하세요</p><button id="aiStart">AI 대전</button><button id="onlineStart">온라인 대전 · 준비 안내</button><div id="onlineInfo" hidden><h2>온라인 대전은 아직 연결되지 않았습니다</h2><p>친구와 대결하려면 HTTPS 게임 사이트와 실시간 경기 서버가 필요합니다.<br>방 생성 → 초대 코드 공유 → 친구 참가 → 양쪽 준비 → 경기 시작 방식으로 구축할 수 있습니다.<br>현재 파일은 AI 대전만 플레이할 수 있습니다.</p></div><p>경기 시간은 화면 위에서 1·3·5·9분 중 선택할 수 있습니다.</p>';document.body.append(startMenu);paused=true;$('aiStart').onclick=()=>{startMenu.hidden=true;restart();};$('onlineStart').onclick=()=>{$('onlineInfo').hidden=false;};
-addEventListener('keydown',e=>{if(!startMenu.hidden){e.stopImmediatePropagation();e.preventDefault();}},true);
+addEventListener('keydown',e=>{if(!startMenu.hidden){const editable=e.target.closest&&e.target.closest('input,textarea,select,[contenteditable="true"]');e.stopImmediatePropagation();if(!editable)e.preventDefault();}},true);
 
 
 let onlineSocket=null,onlineSide=-1,onlineRoom='',netHeld={},netCharge={},lastNetworkSnapshot=null;
